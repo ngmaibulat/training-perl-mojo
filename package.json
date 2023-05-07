@@ -1,0 +1,16 @@
+{
+    "name": "training-perl-mojo",
+    "version": "0.0.1",
+    "description": "Using Mojolicious Web Framework",
+    "main": "nodemon --config nodemon.json",
+    "scripts": {
+      "test": "cd app; prove"
+    },
+    "keywords": [],
+    "author": "",
+    "license": "MIT",
+    "dependencies": {
+      "autoprefixer": "^10.4.14",
+      "tailwindcss": "^3.3.2"
+    }
+  }

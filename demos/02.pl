@@ -1,7 +1,24 @@
 #!/usr/bin/env perl
 use Mojolicious::Lite -signatures;
 
+# $app->secrets(['Mojolicious rocks']);
+
+app->secrets(['Mojolicious rocks']);
+
 get '/' => sub ($c) {
+
+  my $user = $c->param('user') || '';
+  my $pass = $c->param('pass') || '';
+
+  my $user = $c->session('user') || 'sebastian';
+  my $counter = $c->session('counter') || 0;
+
+  $counter++;
+
+  $c->session(user => $user );
+  $c->session(counter => $counter);
+
+  $c->stash(counter => $counter);
   $c->render(template => 'index');
 };
 
@@ -17,5 +34,7 @@ __DATA__
 <!DOCTYPE html>
 <html>
   <head><title><%= title %></title></head>
-  <body><%= content %></body>
+  <body>
+    <%= $counter %>
+  </body>
 </html>
